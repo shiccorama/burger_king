@@ -27,26 +27,21 @@ class App extends Component {
     if (this.state.showPersons){
       persons_to_show = (
         <div>
-            <Person 
-                send_state={this.state.persons}
-                id={this.state.persons[0].id}
-                name={this.state.persons[0].name}
-                age={this.state.persons[0].age}
-            />
-            <Person 
-                send_state={this.state.persons}
-                id=  {this.state.persons[0].id}
-                name={this.state.persons[0].name}
-                age= {this.state.persons[0].age}
-            />
-            <Person 
-                send_state={this.state.persons}
-                id={this.state.persons[0].id}
-                name={this.state.persons[0].name}
-                age={this.state.persons[0].age}
-            /> 
+
+          { this.state.persons.map((i) => {
+              return(
+                <Person 
+                  key = {Math.random()}
+                  id = {i.id}
+                  name = {i.name}
+                  age = {i.age}
+                />
+              )
+            })
+          }
+
         </div>
-      )
+      );
 
     };
 
