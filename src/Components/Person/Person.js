@@ -17,7 +17,7 @@ const Person = (props) => {
 
         return(
             <div className="Person">
-                <div>
+                <div onClick={props.clickMe}>
                     {props.id} 
                     {props.name}
                     {props.age} 

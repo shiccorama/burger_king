@@ -21,6 +21,12 @@ class App extends Component {
     });
   }
 
+  deletePersonHandler = (person_index) => {
+    const persons_after_deleting = [...this.state.persons];
+    persons_after_deleting.splice(person_index, 1);
+    this.setState({persons: persons_after_deleting});
+  }
+
   render(){
 
     let persons_to_show = null;
@@ -28,13 +34,15 @@ class App extends Component {
       persons_to_show = (
         <div>
 
-          { this.state.persons.map((i) => {
+          { this.state.persons.map((i, person_index) => {
               return(
                 <Person 
+                  
                   key = {Math.random()}
                   id = {i.id}
                   name = {i.name}
                   age = {i.age}
+                  clickMe = {() => this.deletePersonHandler(person_index)}
                 />
               )
             })
