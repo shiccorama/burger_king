@@ -10,7 +10,9 @@ class App extends Component {
     persons: [
       {id: 1, name: "ahmed", age: 8},
       {id: 2, name: "ibrahim", age: 10},
-      {id: 3, name: "eissa", age: 12}
+      {id: 3, name: "eissa", age: 12},
+      {id: 4, name: "eman", age: 24},
+      {id: 5, name: "hassan", age: 45}
     ],
     otherState: "some other state value",
     showPersons: false,
@@ -42,11 +44,7 @@ class App extends Component {
     const joiningStrings = charArray.join("");
     this.setState({enteredText: joiningStrings})
     
-
   }
-
-
-
 
 
   render(){
@@ -84,14 +82,21 @@ class App extends Component {
               )
           });
         
-    
+    let styleClasses = [];
+    if(this.state.persons.length <= 2){
+      styleClasses.push("red");
+    }
+    if(this.state.persons.length <= 3){
+      styleClasses.push("green");
+    }
+    const redGreenStyle = styleClasses.join(" ");
 
 
 
     return (
       <div className="App">
 
-          <h1> hello from app</h1>
+          <h1 className={redGreenStyle}> hello from app</h1>
           <button onClick={this.togglePersonsHandler}> Toggle Persons </button>
           {persons_to_show}
           <form>
